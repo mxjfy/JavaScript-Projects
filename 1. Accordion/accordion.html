@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Accordion</title>
+    <style>
+        body{
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .accordion{
+            width: 400px;
+           
+        }
+        .accordion-item{
+            margin-bottom: 15px;
+            transition: all .3s ease-in-out;
+        }
+        .accordion-title{
+            background-color: brown;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            
+        }
+        .accordion-title:hover{
+            background-color: rgba(165, 42, 42, 0.76);
+        }
+        .accordion-content{
+            padding: 0px 10px;
+            display: none;
+            border: 1px solid black;
+            background-color: aliceblue;
+            transition: all .3s ease-in-out;
+            
+        }
+        .accordion-item.active .accordion-content{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="accordion">
+        <div class="accordion-item">
+            <div class="accordion-title">Accordion 1</div>
+            <div class="accordion-content">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ea! Ullam harum animi dolores optio sunt officiis sit aliquid? Delectus, vero deleniti. Harum, dolorum fuga? Corrupti perspiciatis eius, maxime laudantium eligendi est eaque repellat aliquam, dolor nam harum corporis id quia voluptate. At dolores sapiente sit fugiat pariatur voluptatibus iste.
+                </p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-title">Accordion 2</div>
+            <div class="accordion-content">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ea! Ullam harum animi dolores optio sunt officiis sit aliquid? Delectus, vero deleniti. Harum, dolorum fuga? Corrupti perspiciatis eius, maxime laudantium eligendi est eaque repellat aliquam, dolor nam harum corporis id quia voluptate. At dolores sapiente sit fugiat pariatur voluptatibus iste.
+                </p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-title">Accordion 3</div>
+            <div class="accordion-content">
+             <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ea! Ullam harum animi dolores optio sunt officiis sit aliquid? Delectus, vero deleniti. Harum, dolorum fuga? Corrupti perspiciatis eius, maxime laudantium eligendi est eaque repellat aliquam, dolor nam harum corporis id quia voluptate. At dolores sapiente sit fugiat pariatur voluptatibus iste.
+             </p>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <div class="accordion-title">Accordion 4</div>
+            <div class="accordion-content">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos, ea! Ullam harum animi dolores optio sunt officiis sit aliquid? Delectus, vero deleniti. Harum, dolorum fuga? Corrupti perspiciatis eius, maxime laudantium eligendi est eaque repellat aliquam, dolor nam harum corporis id quia voluptate. At dolores sapiente sit fugiat pariatur voluptatibus iste.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // SINGLE ACCORDION
+    /*
+        const accTitle = document.querySelector('.accordion-title');
+        const accContent = document.querySelector('.accordion-content');
+
+        accTitle.addEventListener("click", ()=>{
+            accContent.classList.toggle('active');
+        })
+    */
+
+    // MULTIPLE ACCORDION USING TRADITIONAL for loop
+
+    // const accTitle = document.querySelectorAll('.accordion-title');
+    // const accContent = document.querySelectorAll('.accordion-content');
+
+    /*
+    for(let i = 0; i < accTitle.length; i++){
+        accTitle[i].addEventListener("click", ()=>{
+            accContent[i].classList.toggle('active');
+        })
+    }
+    */
+
+    // forEach loop
+    const accItem = document.querySelectorAll('.accordion-item');
+
+    accItem.forEach(function(item){ // all accItem class has been stored in item
+        const title = item.querySelector('.accordion-title'); // in item, target accordion-title
+        const content = item.querySelector('.accordion-content'); // in item, target accordion-content
+
+        title.addEventListener("click", ()=>{
+            // checking if it is the accordion that user clicked 
+            for(i = 0; i < accItem.length; i++){
+                if(accItem[i] != item){
+                    accItem[i].classList.remove('active');
+                }else{
+                    item.classList.toggle('active');
+                }
+            }
+            // item.classList.toggle('active');
+        })
+    })
+
+
+</script>
+</html>
